@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+</head>
+<body>
+    <header>
+        <h1>Admin Panel</h1>
+    </header>
+    <section>
+        <h2>Add New User</h2>
+        <form action="/users/add" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <label for="role">Role:</label>
+            <select id="role" name="role" required>
+                <option value="Volunteer">Volunteer</option>
+                <option value="Manager">Manager</option>
+            </select>
+            <button type="submit">Add User</button>
+        </form>
+    </section>
+    <section>
+        <h2>All Users</h2>
+        <ul>
+            {{#users}}
+            <li>
+                {{username}} - {{role}} - {{shop}}
+                <form action="/users/delete" method="POST" style="display:inline;">
+                    <input type="hidden" name="username" value="{{username}}">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+            {{/users}}
+        </ul>
+    </section>
+</body>
+</html>

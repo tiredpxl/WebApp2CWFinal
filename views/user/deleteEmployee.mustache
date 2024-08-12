@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Employee</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1>Admin Panel</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="pt-4">
+        <div class="container">
+            <h1>Delete Employee</h1>
+            <form action="/users/delete" method="POST">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

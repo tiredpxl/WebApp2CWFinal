@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory</title>
+    <link rel="stylesheet" href="public/css/styles.css">
+</head>
+<body>
+    <div class="inventory-container">
+            {{#items}}
+        <div class="item">
+            <img src="/public/images/{{image}}" alt="{{name}}" style="width: 100px; height: 120px;">
+            <strong>Name:</strong> {{name}}<br>
+            <strong>Description:</strong> {{description}}<br>
+            <strong>Price:</strong> ${{price}}<br>
+            <strong>Shop Location:</strong> {{shop}}<br>
+            {{#soldOut}}
+            <strong>Status:</strong> Sold Out<br>
+            {{/soldOut}}
+            {{^soldOut}}
+            <strong>Status:</strong> Available<br>
+            {{/soldOut}}
+            <form action="/inventory/delete" method="POST" style="display:inline;">
+                <input type="hidden" name="itemId" value="{{_id}}">
+                <button type="submit">Delete</button>
+            </form>
+            {{#soldOut}}
+            {{/soldOut}}
+            {{^soldOut}}
+                <button class="edit-button" 
+                    data-item-id="{{_id}}" 
+                    data-name="{{name}}" 
+                    data-description="{{description}}" 
+                    data-price="{{price}}" 
+                    data-shop="{{shop}}" 
+                    data-sold-out="{{soldOut}}">
+                Edit
+                </button>
+            {{/soldOut}}
+        </div>
+    {{/items}}
+    </div>
+
+    <div class="form-container">
+    <div class="card">
+        <h3>Add Item</h3>
+        <form action="/inventory/add" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <br>
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" required>
+            <br>
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" step="0.01" required>
+            <br>
+            <label for="shop">Shop Location:</label>
+            <select id="shop" name="shop" required>
+                <option value="Glasgow Hospice Charity Shop - Victoria Rd">Victoria Rd</option>
+                <option value="Glasgow Hospice Charity Shop - Kilmarnock Rd">Kilmarnock Rd</option>
+                <option value="Glasgow Hospice Charity Shop - Broomielaw">Broomielaw</option>
+                <option value="Glasgow Hospice Charity Shop - Partick">Partick</option>
+            </select>
+            <br>
+            <label for="soldOut">Sold Out:</label>
+            <input type="checkbox" id="soldOut" name="soldOut">
+            <br>
+            <button type="submit">Add Item</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h3>Edit Item</h3>
+        <form action="/inventory/edit" method="POST">
+            <input type="hidden" id="edit-itemId" name="itemId" required>
+            <br>
+            <label for="name">Name:</label>
+            <input type="text" id="edit-name" name="name" required>
+            <br>
+            <label for="description">Description:</label>
+            <input type="text" id="edit-description" name="description" required>
+            <br>
+            <label for="price">Price:</label>
+            <input type="number" id="edit-price" name="price" step="0.01" required>
+            <br>
+            <label for="shop">Shop Location:</label>
+            <select id="edit-shop" name="shop" required>
+                <option value="Glasgow Hospice Charity Shop - Victoria Rd">Victoria Rd</option>
+                <option value="Glasgow Hospice Charity Shop - Kilmarnock Rd">Kilmarnock Rd</option>
+                <option value="Glasgow Hospice Charity Shop - Broomielaw">Broomielaw</option>
+                <option value="Glasgow Hospice Charity Shop - Partick">Partick</option>
+            </select>
+            <br>
+            <label for="soldOut">Sold Out:</label>
+            <input type="checkbox" id="edit-soldOut" name="soldOut">
+            <br>
+            <button type="submit">Edit Item</button>
+        </form>
+    </div>
+</div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const editButtons = document.querySelectorAll('.edit-button');
+        
+        editButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const itemId = this.getAttribute('data-item-id');
+                const name = this.getAttribute('data-name');
+                const description = this.getAttribute('data-description');
+                const price = this.getAttribute('data-price');
+                const shop = this.getAttribute('data-shop');
+                const soldOut = this.getAttribute('data-sold-out') === 'true';
+
+                document.getElementById('edit-itemId').value = itemId;
+                document.getElementById('edit-name').value = name;
+                document.getElementById('edit-description').value = description;
+                document.getElementById('edit-price').value = price;
+                document.getElementById('edit-shop').value = shop;
+                document.getElementById('edit-soldOut').checked = soldOut;
+            });
+        });
+    });
+
+        const deleteForms = document.querySelectorAll('form[action="/inventory/delete"]');
+        
+        deleteForms.forEach(form => {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const formData = new FormData(this);
+                const itemId = formData.get('itemId');
+
+                fetch(`/inventory/delete/${itemId}`, {
+                    method: 'DELETE',
+                })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.reload();
+                    } else {
+                        alert('Failed to delete item');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Failed to delete item');
+                });
+            });
+        });
+
+</script>
+</body>
+</html>
