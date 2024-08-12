@@ -197,6 +197,13 @@ app.use(function(err, req, res, next) {
     res.send('Internal Server Error.');
 });
 
-app.listen(3000, () => {
-    console.log('Server is running on http://localhost:3000. Ctrl^c to exit.');
+//deployed on Heroku
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is listening on ${PORT}. Ctrl^c to exit.`);
 });
+
+//local host
+// app.listen(3000, () => {
+//     console.log('Server is running on http://localhost:3000. Ctrl^c to exit.');
+// });

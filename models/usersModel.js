@@ -23,10 +23,10 @@ class UsersDAO {
             } else if (count === 0) {
                 const initialUsers = [
                     { username: "Manager", password: "Manager1", role: "Manager" },
-                    { username: "Volunteer1", password: "Volunteer1", role: "Volunteer", shop: "Glasgow Hospice Charity Shop - Victoria Rd" },
-                    { username: "Volunteer2", password: "Volunteer2", role: "Volunteer", shop: "Glasgow Hospice Charity Shop - Kilmarnock Rd" },
-                    { username: "Volunteer3", password: "Volunteer3", role: "Volunteer", shop: "Glasgow Hospice Charity Shop - Broomielaw" },
-                    { username: "Volunteer4", password: "Volunteer4", role: "Volunteer", shop: "Glasgow Hospice Charity Shop - Partick" }
+                    { username: "Volunteer1", password: "Volunteer1", role: "Volunteer", shop: "Glasgow Hospice Charity Shop - Victoria Rd", shopNumber: 1 },
+                    { username: "Volunteer2", password: "Volunteer2", role: "Volunteer", shop: "Glasgow Hospice Charity Shop - Kilmarnock Rd", shopNumber: 2 },
+                    { username: "Volunteer3", password: "Volunteer3", role: "Volunteer", shop: "Glasgow Hospice Charity Shop - Broomielaw", shopNumber: 3 },
+                    { username: "Volunteer4", password: "Volunteer4", role: "Volunteer", shop: "Glasgow Hospice Charity Shop - Partick", shopNumber: 4 },
                 ];
 
                 const hashPromises = initialUsers.map(user => {
