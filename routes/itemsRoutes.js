@@ -23,4 +23,7 @@ router.get('/items', itemsController.getAllItems);
 // Route to get all items for inStore
 router.get('/inStore', itemsController.getInStoreItems);
 
+// Route to get item details
+router.get('/details/:itemName', itemsController.getItemDetails);
+
 module.exports = router;

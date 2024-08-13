@@ -67,15 +67,15 @@ exports.deleteItem = (req, res) => {
 
 // Get item details
 exports.getItemDetails = (req, res) => {
-    const { itemId } = req.params;
-    itemsDB.getItemById(itemId, (err, item) => {
+    const { itemName } = req.params;
+    itemsDB.getItemByName(itemName, (err, item) => {
         if (err) {
             return res.status(500).send('Internal Server Error');
         }
         if (!item) {
             return res.status(404).send('Item not found');
         }
-        res.status(200).json(item);
+        res.render('details', item);
     });
 };
 

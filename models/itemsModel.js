@@ -163,6 +163,12 @@ class ItemDAO {
     getItemsByShop(shopNumber, callback) {
         this.db.find({ shopNumber: shopNumber }, callback);
     }
+
+    getItemByName(itemName, callback) {
+        this.db.findOne({ name: itemName }, (err, item) => {
+            callback(err, item);
+        });
+    }
 }
 
 module.exports = ItemDAO;

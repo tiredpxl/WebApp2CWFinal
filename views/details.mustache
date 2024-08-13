@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{name}}</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo-container">
+            <img src="/images/logo.png" alt="Logo" class="logo">
+            <div class="logo-text">Glasgow Hospice Charity</div>
+        </div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about">About Us</a>
+            <a href="/inStore">What's in store</a>
+            <a href="/shops">Where you'll find us</a>
+            {{#isVolunteer}}
+            <a href="/inventory">Inventory</a>
+            {{/isVolunteer}}
+        </div>
+        <div class="auth-links">
+            {{#isSignedIn}}
+                <a href="/profile">{{username}}</a>
+                <a href="/logout">Logout</a>
+                {{#isManager}}
+                    <a href="/admin">Admin</a>
+                {{/isManager}}
+            {{/isSignedIn}}
+            {{^isSignedIn}}
+                <a href="/signIn">Sign In</a>
+            {{/isSignedIn}}
+        </div>
+    </div>
+    <div class="page-info">
+        <h1>{{name}}</h1>
+        <img src="/images/{{image}}" alt="{{name}}" style="width: 300px; height: 300px;">
+        <p><b>£{{price}}</b></p>
+        <p>{{description}}</p>
+        <p>{{shop}}</p>
+        {{#soldOut}}
+        <p class="sold-out">SOLD OUT</p>
+        {{/soldOut}}
+    </div>
+</body>
+</html>

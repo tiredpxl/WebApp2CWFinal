@@ -42,7 +42,7 @@
     <div class="page-container">
         <div class="items-grid">
             {{#items}}
-                <div class="item-container">
+                <div class="item-container" data-item-name="{{name}}">
                     <img src="/images/{{image}}" alt="{{name}}" style="width: 300px; height: 300px;">
                     <br>
                     <h4>{{name}}</h4>
@@ -62,16 +62,16 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
         const itemContainers = document.querySelectorAll('.item-container');
 
         itemContainers.forEach(container => {
-            container.addEventListener('click', function() {
-                alert(`You clicked on ${this.querySelector('h4').innerText}`);
-                // You can replace the alert with any action you want to perform on click
-            });
+        container.addEventListener('click', function() {
+            const itemName = this.dataset.itemName;
+            window.location.href = `/details/${itemName}`;
         });
     });
-    </script>
-    </body>
+});
+</script>
+</body>
 </html>

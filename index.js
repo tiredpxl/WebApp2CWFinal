@@ -145,27 +145,8 @@ app.get('/shops', (req, res) => {
     });
 });
 
-function checkAssignedShop(req, res, next) {
-    const userId = req.session.userId;
-    usersDB.db.findOne({ _id: userId }, (err, user) => {
-        if (err || !user || !user.assignedShop) {
-            return res.status(403).send('Access denied');
-        }
-        req.assignedShop = user.assignedShop;
-        next();
-    });
-}
-
-//render items page
-app.get('/item', checkAssignedShop, (req, res) => {
-    itemsDB.getItemsByShop(req.assignedShop, (err, items) => {
-        if (err) {
-            res.status(500).send('Error fetching items');
-        } else {
-            console.log(items); // Add this line to debug
-            res.render('item', { items: items });
-        }
-    });
+app.get('/details/:itemName', (req, res) => {
+    res.render('details', { itemName: req.params.itemName });
 });
 
 app.post('/inventory/edit', (req, res) => {
