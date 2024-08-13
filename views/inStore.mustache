@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/about">About Us</a>
+        <a href="/inStore">What's in store</a>
+        <a href="/shops">Where you'll find us</a>
+        {{#isVolunteer}}
+        <a href="/inventory">Inventory</a>
+        {{/isVolunteer}}
+        {{#isSignedIn}}
+            <a href="/profile" style="float: right">{{username}}</a>
+            <a href="/logout" style="float: right">Logout</a>
+            {{#isManager}}
+                <a href="/admin">Admin</a>
+            {{/isManager}}
+        {{/isSignedIn}}
+        {{^isSignedIn}}
+            <a href="/signIn" style="float: right">Sign In</a>
+        {{/isSignedIn}}
+    </div>
+    <h1>Window Shopping</h1>
+      <p>Come have a browse at what we've got in all 4 of our shops</p>
+        <h1>{{title}}</h1>
+        <div class="items-grid">
+        {{#items}}
+            <div class="item-container">
+                <img src="/images/{{image}}" alt="{{name}}" style="width: 300px; height: 300px;">
+                <h4>{{name}}</h4>
+                <p>{{description}}</p>
+                <p>£{{price}}</p>
+                <p>{{#soldOut}}Sold Out{{/soldOut}}{{^soldOut}}Available{{/soldOut}}</p>
+            </div>
+        {{/items}}
+        {{^items}}
+            No items yet.
+        {{/items}}
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const itemContainers = document.querySelectorAll('.item-container');
+
+        itemContainers.forEach(container => {
+            container.addEventListener('click', function() {
+                alert(`You clicked on ${this.querySelector('h4').innerText}`);
+                // You can replace the alert with any action you want to perform on click
+            });
+        });
+    });
+    </script>
+    </body>
+</html>

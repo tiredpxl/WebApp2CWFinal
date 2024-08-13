@@ -1,7 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>About Us</title>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/about">About Us</a>
+        <a href="/inStore">What's in store</a>
+        <a href="/shops">Where you'll find us</a>
+        {{#isVolunteer}}
+        <a href="/inventory">Inventory</a>
+        {{/isVolunteer}}
+        {{#isSignedIn}}
+            <a href="/profile" style="float: right">{{username}}</a>
+            <a href="/logout" style="float: right">Logout</a>
+            {{#isManager}}
+                <a href="/admin">Admin</a>
+            {{/isManager}}
+        {{/isSignedIn}}
+        {{^isSignedIn}}
+            <a href="/signIn" style="float: right">Sign In</a>
+        {{/isSignedIn}}
+    </div>
+    <div class="container">
+        <h1>About Us</h1>
+        <p>The Glasgow Hospice Charity to care for people who have a terminal or life-limiting condition and their families.
 
-<div class="container">
-    <h1>About Us</h1>
-    <p>The Glasgow Hospice Charity to care for people who have a terminal or life-limiting condition and their families.
-
-    It is our aim to support people to live as well as possible for as long as possible. while we may not be able to add days to lives we aim to add life to days. </p>
-</div>
+        It is our aim to support people to live as well as possible for as long as possible. while we may not be able to add days to lives we aim to add life to days. </p>
+    </div>
+</body>
+</html>

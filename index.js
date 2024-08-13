@@ -53,8 +53,10 @@ app.get('/about', function(req, res) {
     res.render('about');
 });
 
-app.get('/item', function(req, res) {
-    res.render('item');
+app.get('/inStore', (req, res) => {
+    getItems((items) => {
+    res.render('inStore', {items: items});
+    });
 });
 
 app.get('/shops', function(req, res) {
@@ -154,13 +156,14 @@ function checkAssignedShop(req, res, next) {
     });
 }
 
-// Route to render items (restricted to assigned shop)
-app.get('/items', checkAssignedShop, (req, res) => {
+//render items page
+app.get('/item', checkAssignedShop, (req, res) => {
     itemsDB.getItemsByShop(req.assignedShop, (err, items) => {
         if (err) {
             res.status(500).send('Error fetching items');
         } else {
-            res.render('items', { items: items });
+            console.log(items); // Add this line to debug
+            res.render('item', { items: items });
         }
     });
 });

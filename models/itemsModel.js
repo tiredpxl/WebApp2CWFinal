@@ -29,7 +29,7 @@ class ItemDAO {
                         price: 5.00,
                         shop: "Glasgow Hospice Charity Shop - Victoria Rd",
                         soldOut: false,
-                        image: '/public/images/tshirt.jpg'
+                        image: 'tshirt.jpg'
                     },
                     {
                         shopNumber: 2,
@@ -38,7 +38,7 @@ class ItemDAO {
                         price: 10.00,
                         shop: "Glasgow Hospice Charity Shop - Kilmarnock Rd",
                         soldOut: false,
-                        image: '/public/images/jeans.jpg'
+                        image: 'jeans.jpg'
 
                     },
                     {
@@ -48,7 +48,7 @@ class ItemDAO {
                         price: 15.00,
                         shop: "Glasgow Hospice Charity Shop - Broomielaw",
                         soldOut: false,
-                        image: '/public/images/vase.jpg'
+                        image: 'vase.jpg'
                     },
                     {
                         shopNumber: 4,
@@ -57,7 +57,7 @@ class ItemDAO {
                         price: 4.00,
                         shop: "Glasgow Hospice Charity Shop - Partick",
                         soldOut: false,
-                        image: '/public/images/book.jpg'
+                        image: 'book.jpg'
                     },
                     {
                         shopNumber: 1,
@@ -66,7 +66,7 @@ class ItemDAO {
                         price: 8.00,
                         shop: "Glasgow Hospice Charity Shop - Victoria Rd",
                         soldOut: false,
-                        image: '/public/images/bracelet.jpg'
+                        image: 'bracelet.jpg'
                     },
                     {
                         shopNumber: 2,
@@ -75,7 +75,7 @@ class ItemDAO {
                         price: 3.00,
                         shop: "Glasgow Hospice Charity Shop - Kilmarnock Rd",
                         soldOut: false,
-                        image: '/public/images/candle.jpg'
+                        image: 'candle.jpg'
                     },
                     {
                         shopNumber: 3,
@@ -84,7 +84,7 @@ class ItemDAO {
                         price: 15.00,
                         shop: "Glasgow Hospice Charity Shop - Broomielaw",
                         soldOut: false,
-                        image: '/public/images/bag.jpg'
+                        image: 'bag.jpg'
                     },
                     {
                         shopNumber: 1,
@@ -93,7 +93,7 @@ class ItemDAO {
                         price: 9.00,
                         shop: "Glasgow Hospice Charity Shop - Partick",
                         soldOut: true,
-                        image: '/public/images/shoes.jpg'
+                        image: 'shoes.jpg'
                     },
                     {
                         shopNumber: 2,
@@ -102,7 +102,7 @@ class ItemDAO {
                         price: 20.00,
                         shop: "Glasgow Hospice Charity Shop - Victoria Rd",
                         soldOut: true,
-                        image: '/public/images/coat.jpg'
+                        image: 'coat.jpg'
                     },
                     {
                         shopNumber: 1,
@@ -111,7 +111,7 @@ class ItemDAO {
                         price: 6.00,
                         shop: "Glasgow Hospice Charity Shop - Kilmarnock Rd",
                         soldOut: true,
-                        image: '/public/images/hat.jpg'
+                        image: 'hat.jpg'
                     }
                 ], (err) => {
                     if (err) {

@@ -4,7 +4,7 @@ const itemsDB = new ItemDAO('items.db');
 // Initialize the database (if not already initialized)
 itemsDB.init();
 
-// Get all items
+// Get all items - volunteer inventory
 exports.getAllItems = (req, res) => {
     itemsDB.getAllItems((err, items) => {
         if (err) {
@@ -76,5 +76,15 @@ exports.getItemDetails = (req, res) => {
             return res.status(404).send('Item not found');
         }
         res.status(200).json(item);
+    });
+};
+
+// Get all items for inStore page
+exports.getInStoreItems = (req, res) => {
+    itemsDB.getAllItems((err, items) => {
+        if (err) {
+            return res.status(500).send('Internal Server Error');
+        }
+        res.render('inStore', { items });
     });
 };

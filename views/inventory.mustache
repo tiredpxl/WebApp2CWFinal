@@ -4,16 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory</title>
-    <link rel="stylesheet" href="public/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <div class="inventory-container">
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/about">About Us</a>
+        <a href="/inStore">What's in store</a>
+        <a href="/shops">Where you'll find us</a>
+        {{#isVolunteer}}
+        <a href="/inventory">Inventory</a>
+        {{/isVolunteer}}
+        {{#isSignedIn}}
+            <a href="/profile" style="float: right">{{username}}</a>
+            <a href="/logout" style="float: right">Logout</a>
+            {{#isManager}}
+                <a href="/admin">Admin</a>
+            {{/isManager}}
+        {{/isSignedIn}}
+        {{^isSignedIn}}
+            <a href="/signIn" style="float: right">Sign In</a>
+        {{/isSignedIn}}
+    </div>
+    <div class="items-grid">
             {{#items}}
-        <div class="item">
-            <img src="/public/images/{{image}}" alt="{{name}}" style="width: 100px; height: 120px;">
+        <div class="item-container">
+            <img src="/images/{{image}}" alt="{{name}}" style="width: 300px; height: 300px;">
             <strong>Name:</strong> {{name}}<br>
             <strong>Description:</strong> {{description}}<br>
-            <strong>Price:</strong> ${{price}}<br>
+            <strong>Price:</strong> £{{price}}<br>
             <strong>Shop Location:</strong> {{shop}}<br>
             {{#soldOut}}
             <strong>Status:</strong> Sold Out<br>
@@ -38,6 +57,7 @@
                 Edit
                 </button>
             {{/soldOut}}
+            <hr>
         </div>
     {{/items}}
     </div>

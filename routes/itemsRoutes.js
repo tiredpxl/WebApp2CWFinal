@@ -17,4 +17,10 @@ router.get('/inventory/:itemId', itemsController.getItemDetails);
 // Route to delete an existing item
 router.delete('/inventory/delete/:itemId', itemsController.deleteItem);
 
+//get all items for "items" page
+router.get('/items', itemsController.getAllItems);
+
+// Route to get all items for inStore
+router.get('/inStore', itemsController.getInStoreItems);
+
 module.exports = router;
