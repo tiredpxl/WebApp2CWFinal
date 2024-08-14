@@ -95,7 +95,8 @@
                     data-name="{{name}}" 
                     data-description="{{description}}" 
                     data-price="{{price}}" 
-                    data-shop="{{shop}}" 
+                    data-shop="{{shop}}"
+                    data-collection="{{collection}}" 
                     data-sold-out="{{soldOut}}">
                 Edit
                 </button>
@@ -103,8 +104,56 @@
         </div>
         {{/items}}
     </div>
-
+    <!-- Hidden edit form -->
+    <div class="edit-form-container" style="display:none;">
+        <div class="card">
+            <h3>Edit Item</h3>
+            <form id="edit-form" action="/inventory/edit" method="POST">
+                <input type="hidden" id="edit-item-id" name="itemId">
+                <label for="edit-name">Name:</label>
+                <input type="text" id="edit-name" name="name" required>
+                <label for="edit-description">Description:</label>
+                <input type="text" id="edit-description" name="description" required>
+                <label for="edit-price">Price:</label>
+                <input type="number" id="edit-price" name="price" required>
+                <label for="edit-shop">Shop:</label>
+                <input type="text" id="edit-shop" name="shop" readonly>
+                <label for="edit-collection">Collection:</label>
+                <select id="edit-collection" name="collection" required>
+                    <option value="clothing">Clothing</option>
+                    <option value="jewellery">Jewellery</option>
+                    <option value="homeware">Homeware</option>
+                    <option value="books">Books</option>
+                    <option value="footwear">Footwear</option>
+                    <option value="accessories">Accessories</option>
+                </select>
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
     <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Edit button click handler
+        document.querySelectorAll('.edit-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const itemId = this.getAttribute('data-item-id');
+                const name = this.getAttribute('data-name');
+                const description = this.getAttribute('data-description');
+                const price = this.getAttribute('data-price');
+                const shop = this.getAttribute('data-shop');
+                const collection = this.getAttribute('data-collection');
+
+                document.getElementById('edit-item-id').value = itemId;
+                document.getElementById('edit-name').value = name;
+                document.getElementById('edit-description').value = description;
+                document.getElementById('edit-price').value = price;
+                document.getElementById('edit-shop').value = shop;
+                document.getElementById('edit-collection').value = collection;
+
+                document.querySelector('.edit-form-container').style.display = 'block';
+            });
+        });
+    });
         document.addEventListener('DOMContentLoaded', function() {
             fetch('/current-user-shop')
                 .then(response => response.json())

@@ -1,23 +1,17 @@
-{"shopNumber":3,"name":"Bag","description":"A small brown leather bag","price":15,"shop":"Glasgow Hospice Charity Shop - Broomielaw","soldOut":false,"image":"bag.jpg","collection":"accessories","_id":"2Dc9P6qlj2nqkx8K"}
-{"shopNumber":3,"name":"Scarf","description":"A woolen scarf","price":8,"shop":"Glasgow Hospice Charity Shop - Broomielaw","soldOut":false,"image":"scarf.jpg","collection":"accessories","_id":"2dwGpIolYhuMTmiM"}
-{"shopNumber":1,"name":"Boots","description":"A pair of boots, size 10","price":12,"shop":"Glasgow Hospice Charity Shop - Victoria Rd","soldOut":false,"image":"boots.jpg","collection":"footwear","_id":"4YPl6Mn3twSeIMyL"}
-{"shopNumber":4,"name":"Book","description":"A book","price":4,"shop":"Glasgow Hospice Charity Shop - Partick","soldOut":false,"image":"book.jpg","collection":"books","_id":"4v0UILrRX4fnnwQP"}
-{"shopNumber":4,"name":"Hiking Boots","description":"A pair of hiking boots, size 8","price":10,"shop":"Glasgow Hospice Charity Shop - Partick","soldOut":false,"image":"hikingBoots.jpg","collection":"footwear","_id":"6QBVu9GvBnoyYbV3"}
-{"image":null,"name":"test","description":"test","price":20,"shop":"Glasgow Hospice Charity Shop - Victoria Rd","_id":"6dcIsigW3eb4vrpB"}
-{"shopNumber":2,"name":"Hat","description":"A straw hat","price":6,"shop":"Glasgow Hospice Charity Shop - Kilmarnock Rd","soldOut":true,"image":"hat.jpg","collection":"accessories","_id":"7MIv8oqqs7oWiGYP"}
-{"shopNumber":1,"name":"Bracelet","description":"Silver bracelet with heart charm","price":8,"shop":"Glasgow Hospice Charity Shop - Victoria Rd","soldOut":false,"image":"bracelet.jpg","collection":"jewellery","_id":"DDp3alolCdKecUcc"}
-{"shopNumber":1,"name":"Leather Jacket","description":"A leather jacket","price":30,"shop":"Glasgow Hospice Charity Shop - Victoria Rd","soldOut":false,"image":"leatherJacket.jpg","collection":"clothing","_id":"ITyGhje9TGXgV6kh"}
-{"shopNumber":3,"name":"Sneakers","description":"A pair of white sneakers","price":15,"shop":"Glasgow Hospice Charity Shop - Broomielaw","soldOut":false,"image":"sneakers.jpg","collection":"footwear","_id":"Kb6IeZeL5zdtxBYQ"}
-{"shopNumber":2,"name":"Belt","description":"A leather belt","price":5,"shop":"Glasgow Hospice Charity Shop - Kilmarnock Rd","soldOut":false,"image":"belt.jpg","collection":"accessories","_id":"R7RFdFP1JZS4vEtH"}
-{"image":null,"name":"test","description":"test","price":20,"shop":"Glasgow Hospice Charity Shop - Victoria Rd","_id":"RNZD9DKqLcRKXpLB"}
-{"shopNumber":3,"name":"Vase","description":"A glass vase","price":15,"shop":"Glasgow Hospice Charity Shop - Broomielaw","soldOut":false,"image":"vase.jpg","collection":"homeware","_id":"XFQ2vYIsF7HoYUkt"}
-{"shopNumber":4,"name":"Watch","description":"A digital wristwatch","price":12,"shop":"Glasgow Hospice Charity Shop - Partick","soldOut":false,"image":"watch.jpg","collection":"accessories","_id":"bxstkWZiKCRC5NOb"}
-{"shopNumber":2,"name":"Candle","description":"Jasmine and patchouli scented candle","price":3,"shop":"Glasgow Hospice Charity Shop - Kilmarnock Rd","soldOut":false,"image":"candle.jpg","collection":"homeware","_id":"dYBzvJP9fLhr8qVe"}
-{"shopNumber":2,"name":"Jeans","description":"A pair of blue jeans","price":10,"shop":"Glasgow Hospice Charity Shop - Kilmarnock Rd","soldOut":false,"image":"jeans.jpg","collection":"clothing","_id":"iKDFNdM45STxMthB"}
-{"image":null,"name":"test3","description":"test3","price":20,"shop":"Glasgow Hospice Charity Shop - Victoria Rd","_id":"l3IaGa2upCUMHDQM"}
-{"shopNumber":1,"name":"T-shirt","description":"A plain white t-shirt","price":5,"shop":"Glasgow Hospice Charity Shop - Victoria Rd","soldOut":false,"image":"tshirt.jpg","collection":"clothing","_id":"q6PNpk6fa5O0Wm9K"}
-{"shopNumber":1,"name":"Coat","description":"A waterproof navy coat","price":20,"shop":"Glasgow Hospice Charity Shop - Victoria Rd","soldOut":true,"image":"coat.jpg","collection":"clothing","_id":"s4n9Ni68y6c35YuN"}
-{"shopNumber":4,"name":"Shoes","description":"A pair of black leather shoes","price":9,"shop":"Glasgow Hospice Charity Shop - Partick","soldOut":true,"image":"shoes.jpg","collection":"footwear","_id":"v21utDjktAyBQaA0"}
-{"$$deleted":true,"_id":"6dcIsigW3eb4vrpB"}
-{"$$deleted":true,"_id":"RNZD9DKqLcRKXpLB"}
-{"$$deleted":true,"_id":"l3IaGa2upCUMHDQM"}
+{"shopNumber":3,"name":"Sneakers","description":"A pair of white sneakers","price":15,"shop":"Glasgow Hospice Charity Shop - Broomielaw","soldOut":false,"image":"sneakers.jpg","collection":"footwear","_id":"0zMCd51Nq6YHZjMN"}
+{"shopNumber":4,"name":"Watch","description":"A digital wristwatch","price":12,"shop":"Glasgow Hospice Charity Shop - Partick","soldOut":false,"image":"watch.jpg","collection":"accessories","_id":"2T5IbaFK5KHjGymf"}
+{"shopNumber":1,"name":"Bracelet","description":"Silver bracelet with heart charm","price":8,"shop":"Glasgow Hospice Charity Shop - Victoria Rd","soldOut":false,"image":"bracelet.jpg","collection":"jewellery","_id":"4gNXNrmjFU9Nqoih"}
+{"shopNumber":2,"name":"Hat","description":"A straw hat","price":6,"shop":"Glasgow Hospice Charity Shop - Kilmarnock Rd","soldOut":true,"image":"hat.jpg","collection":"accessories","_id":"6ZVLQ3CrYjDAw6xa"}
+{"shopNumber":1,"name":"Leather Jacket","description":"A leather jacket","price":30,"shop":"Glasgow Hospice Charity Shop - Victoria Rd","soldOut":false,"image":"leatherJacket.jpg","collection":"clothing","_id":"7E9hj9CxnbsMf40W"}
+{"shopNumber":4,"name":"Book","description":"A book","price":4,"shop":"Glasgow Hospice Charity Shop - Partick","soldOut":false,"image":"book.jpg","collection":"books","_id":"ASDg3QWhVUgC5LYA"}
+{"shopNumber":1,"name":"Coat","description":"A waterproof navy coat","price":20,"shop":"Glasgow Hospice Charity Shop - Victoria Rd","soldOut":true,"image":"coat.jpg","collection":"clothing","_id":"GR30H52P3mMwR8wT"}
+{"shopNumber":3,"name":"Scarf","description":"A woolen scarf","price":8,"shop":"Glasgow Hospice Charity Shop - Broomielaw","soldOut":false,"image":"scarf.jpg","collection":"accessories","_id":"JzfeuiMWMHAqZDJ2"}
+{"shopNumber":4,"name":"Shoes","description":"A pair of black leather shoes","price":9,"shop":"Glasgow Hospice Charity Shop - Partick","soldOut":true,"image":"shoes.jpg","collection":"footwear","_id":"QpciQshGbfxk0rKI"}
+{"shopNumber":2,"name":"Jeans","description":"A pair of blue jeans","price":10,"shop":"Glasgow Hospice Charity Shop - Kilmarnock Rd","soldOut":false,"image":"jeans.jpg","collection":"clothing","_id":"ZcGWQAG0ClL8y51Z"}
+{"shopNumber":3,"name":"Bag","description":"A small brown leather bag","price":15,"shop":"Glasgow Hospice Charity Shop - Broomielaw","soldOut":false,"image":"bag.jpg","collection":"accessories","_id":"dI9LBWL9OyDKiJqF"}
+{"shopNumber":4,"name":"Hiking Boots","description":"A pair of hiking boots, size 8","price":10,"shop":"Glasgow Hospice Charity Shop - Partick","soldOut":false,"image":"hikingBoots.jpg","collection":"footwear","_id":"gNf0I27d8kYFOP5v"}
+{"shopNumber":1,"name":"Boots","description":"A pair of boots, size 10","price":12,"shop":"Glasgow Hospice Charity Shop - Victoria Rd","soldOut":false,"image":"boots.jpg","collection":"footwear","_id":"oWeurpgFBTv0uXtc"}
+{"shopNumber":3,"name":"Vase","description":"A glass vase","price":15,"shop":"Glasgow Hospice Charity Shop - Broomielaw","soldOut":false,"image":"vase.jpg","collection":"homeware","_id":"pEYGI8CLZfYPTCQ5"}
+{"shopNumber":null,"name":"T-shirt","description":"A plain white t-shirt","price":50,"shop":"Glasgow Hospice Charity Shop - Victoria Rd","soldOut":false,"collection":"clothing","_id":"pzCe8tSS7r8Z4K5G","itemId":"pzCe8tSS7r8Z4K5G"}
+{"shopNumber":2,"name":"Candle","description":"Jasmine and patchouli scented candle","price":3,"shop":"Glasgow Hospice Charity Shop - Kilmarnock Rd","soldOut":false,"image":"candle.jpg","collection":"homeware","_id":"rW3qnyR08yLc6S9B"}
+{"shopNumber":2,"name":"Belt","description":"A leather belt","price":5,"shop":"Glasgow Hospice Charity Shop - Kilmarnock Rd","soldOut":false,"image":"belt.jpg","collection":"accessories","_id":"tRhINQKUadCe41xB"}

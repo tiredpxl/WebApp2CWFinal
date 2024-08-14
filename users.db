@@ -1,5 +1,9 @@
 {"username":"Volunteer3","password":"$2b$10$u0iySc.31xFOrXN2XFggaetyB2YSqMpleryPWKssUaO0ZsoTGqbqW","role":"Volunteer","shop":"Glasgow Hospice Charity Shop - Broomielaw","_id":"3R1k5OgUcYPiu3d2"}
+{"username":"test@gmail.com","password":"$2b$10$c2dRQvoHnscZeqvsML/sFuZFYIdkv/59fUMl0Wxklq6MYG3kjXvIu","role":"Customer","_id":"5NpXOnw7LD8OxK1T"}
 {"username":"Volunteer4","password":"$2b$10$LmZAtknLIENI32XHB2a2ueLUPhWDqZMvA3kW4zMOUnjuJjRe9mxu6","role":"Volunteer","shop":"Glasgow Hospice Charity Shop - Partick","_id":"7zEHg18NtRaAvhTo"}
+{"username":"test2","password":"$2b$10$8Qjaz.A96RE2pr2m/OwvsOHO5bjyrTI2Bnts8oZveBnAlFq/.fcjK","role":"Customer","_id":"Fo9VoTDk4Omt4OiV"}
 {"username":"Manager","password":"$2b$10$qDQo1/sNsJdRJVthnoTDkuDY1hvgs0K2LwevM86WVU5Wd88AVtZa6","role":"Manager","_id":"PKJFOb5klT6LprUU"}
+{"username":"test3","password":"$2b$10$Mw7lWycvaPTvkSIqY.d1Cehnfg9e7l73jO8GoobNKBzjjnRKPABJa","role":"Customer","_id":"dgQON4oEbjkQ2z17"}
 {"username":"Volunteer2","password":"$2b$10$2LB6L8KeyqixEj98y7RKUurr1BWAvKXx6iHbBDQ.FW3q4guxg3sAS","role":"Volunteer","shop":"Glasgow Hospice Charity Shop - Kilmarnock Rd","_id":"jzSdxj79SZtYx6vp"}
 {"username":"Volunteer1","password":"$2b$10$jPGFDxcz55prLG5txSE5SuPVinh3otlmTR9dYaKah9XjcYrFmK4rO","role":"Volunteer","shop":"Glasgow Hospice Charity Shop - Victoria Rd","_id":"wXB3ZzSQP7jnRbVR"}
+{"username":"test5","password":"$2b$10$yGtyqqBmyf3o0YNEFys9tOB7Hhcz0Fa0Gz2rwrzja5R2XsIySB0Du","role":"Customer","_id":"zvhHDKgDgm3nh2HZ"}

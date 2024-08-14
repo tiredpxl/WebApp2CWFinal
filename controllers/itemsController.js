@@ -58,13 +58,17 @@ exports.addItem = [
 
 // Edit an item
 exports.editItem = (req, res) => {
-    const { itemId, name, description, price, shop, soldOut } = req.body;
+    const { shopNumber, name, description, price, shop, soldOut, image, collection, itemId } = req.body;
     const updatedItem = {
+        shopNumber: parseInt(shopNumber),
         name,
         description,
         price: parseFloat(price),
         shop,
-        soldOut: soldOut === 'on'
+        soldOut: soldOut === 'on',
+        image,
+        collection,
+        itemId
     };
 
     itemsDB.updateItemById(itemId, updatedItem, (err, numReplaced) => {

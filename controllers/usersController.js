@@ -58,3 +58,38 @@ exports.deleteEmployee = (req, res) => {
         res.status(403).send('Access denied');
     }
 };
+
+exports.registerUser = (req, res) => {
+    const { username, password } = req.body;
+    const role = 'Customer'; // Default role for new users
+    bcrypt.hash(password, 10, (err, hashedPassword) => {
+        if (err) {
+            return res.status(500).send('Error hashing password');
+        }
+        const newUser = { username, password: hashedPassword, role };
+        usersDB.addEmployee(newUser, (err, result) => {
+            if (err) {
+                return res.status(500).send('Error registering user');
+            }
+            res.redirect('/');
+        });
+    });
+};
+
+exports.signInUser = (req, res) => {
+    const { username, password } = req.body;
+    usersDB.getEmployeeByUsername(username, (err, user) => {
+        if (err || !user) {
+            console.log('User not found or error:', err);
+            return res.status(401).send('Invalid username or password');
+        }
+        bcrypt.compare(password, user.password, (err, isMatch) => {
+            if (err || !isMatch) {
+                console.log('Password mismatch or error:', err);
+                return res.status(401).send('Invalid username or password');
+            }
+            req.session.user = user;
+            res.redirect('/');
+        });
+    });
+};

@@ -129,6 +129,20 @@ app.post('/signIn', (req, res) => {
     });
 });
 
+app.get('/register', (req, res) => {
+    res.render('user/register');
+});
+
+app.post('/register', (req, res) => {
+    const { username, password, role, shop } = req.body;
+    usersDB.addUser({ username, password, role, shop }, (err, result) => {
+        if (err) {
+            res.status(500).send
+        }
+        res.redirect('/');
+    });
+});
+
 function getCurrentUser(req) {
     return req.session.user;
 }
