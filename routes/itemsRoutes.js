@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const itemsController = require('../controllers/itemsController');
 
-// Route to get all items
+// Route to get items of user's shop
 router.get('/inventory', itemsController.getAllItems);
 
 // Route to add a new item
@@ -15,7 +15,7 @@ router.post('/inventory/edit', itemsController.editItem);
 router.get('/inventory/:itemId', itemsController.getItemDetails);
 
 // Route to delete an existing item
-router.delete('/inventory/delete/:itemId', itemsController.deleteItem);
+router.post('/inventory/delete', itemsController.deleteItem);
 
 //get all items for "items" page
 router.get('/items', itemsController.getAllItems);

@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const session = require('express-session');
 const logoutRoute = require('./routes/logout');
+const multer = require('multer');
 
 const UsersDAO = require('./models/usersModel');
 const ItemsDAO = require('./models/itemsModel');
@@ -148,6 +149,16 @@ app.get('/inventory', (req, res) => {
     res.json(filteredItems);
     });
 });
+
+// Route to get the current user's shop
+app.get('/current-user-shop', (req, res) => {
+    const currentUser = getCurrentUser(req);
+    if (!currentUser) {
+        return res.status(401).send('Unauthorized');
+    }
+    res.json({ shop: currentUser.shop });
+});
+
 
 //verify JWT
 function verifyToken(req, res, next) {

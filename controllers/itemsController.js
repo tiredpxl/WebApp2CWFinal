@@ -1,5 +1,17 @@
 const ItemDAO = require('../models/itemsModel');
 const itemsDB = new ItemDAO('items.db');
+const path = require('path');
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, '/images/'); // Directory to save uploaded files
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + path.extname(file.originalname)); // Unique filename
+    }
+});
+const upload = multer({ storage: storage });
 
 // Initialize the database (if not already initialized)
 itemsDB.init();
@@ -20,22 +32,29 @@ exports.getAllItems = (req, res) => {
 };
 
 // Add a new item
-exports.addItem = (req, res) => {
-    const { name, description, price, shop, soldOut } = req.body;
-    const newItem = {
-        name,
-        description,
-        price: parseFloat(price),
-        shop,
-        soldOut: soldOut === 'on' // Convert checkbox to boolean
-    };
-    itemsDB.addItem(newItem, (err) => {
-        if (err) {
-            return res.status(500).send('Internal Server Error');
-        }
-        res.redirect('/inventory');
-    });
-};
+exports.addItem = [
+    upload.single('itemImage'), //to handle file upload
+    (req, res) => {
+        const { name, description, price, collection } = req.body;
+        const image = req.file ? req.file.filename : null;
+
+        const newItem = {
+            image,
+            name,
+            description,
+            price: parseFloat(price),
+            shop: req.session.user.shop,
+            collection
+        };
+
+        itemsDB.addItem(newItem, (err) => {
+            if (err) {
+                return res.status(500).send('Internal Server Error');
+            }
+            res.redirect('/inventory');
+        });
+    }
+];
 
 // Edit an item
 exports.editItem = (req, res) => {
@@ -59,14 +78,13 @@ exports.editItem = (req, res) => {
     });
 };
 
-// Delete an item
 exports.deleteItem = (req, res) => {
-    const { itemId } = req.params;
+    const { itemId } = req.body;
     itemsDB.deleteItem(itemId, (err) => {
         if (err) {
-            return res.status(500).send('Internal Server Error');
+            return res.status(500).send('Error deleting item');
         }
-        res.status(200).send('Item deleted');
+        res.redirect('/inventory');
     });
 };
 

@@ -7,26 +7,32 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <div class="nav-links">
-        <a href="/">Home</a>
-        <a href="/about">About Us</a>
-        <a href="/inStore">What's in store</a>
-        <a href="/shops">Where you'll find us</a>
-        {{#isVolunteer}}
-        <a href="/inventory" class="active">Inventory</a>
-        {{/isVolunteer}}
-    </div>
-    <div class="auth-links">
-        {{#isSignedIn}}
-            <a href="/profile">{{username}}</a>
-            <a href="/logout">Logout</a>
-            {{#isManager}}
-                <a href="/admin">Admin</a>
-            {{/isManager}}
-        {{/isSignedIn}}
-        {{^isSignedIn}}
-            <a href="/signIn">Sign In</a>
-        {{/isSignedIn}}
+    <div class="navbar">
+        <div class="logo-container">
+            <img src="images/logo.png" alt="Logo" class="logo">
+            <div class="logo-text">Glasgow Hospice Charity</div>
+        </div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about">About Us</a>
+            <a href="/inStore" class="active">What's in store</a>
+            <a href="/shops">Where you'll find us</a>
+            {{#isVolunteer}}
+            <a href="/inventory">Inventory</a>
+            {{/isVolunteer}}
+        </div>
+        <div class="auth-links">
+            {{#isSignedIn}}
+                <a href="/profile">{{username}}</a>
+                <a href="/logout">Logout</a>
+                {{#isManager}}
+                    <a href="/admin">Admin</a>
+                {{/isManager}}
+            {{/isSignedIn}}
+            {{^isSignedIn}}
+                <a href="/signIn">Sign In</a>
+            {{/isSignedIn}}
+        </div>
     </div>
     <div class="page-info">
         <h1>Staff Area</h1>
@@ -37,6 +43,8 @@
         <div class="card">
             <h3>Add Item</h3>
             <form action="/inventory/add" method="POST">
+                <label for="itemImage">Upload Image:</label>
+                <input type="file" id="itemImage" name="itemImage" accept="image/*">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
                 <label for="description">Description:</label>
@@ -44,9 +52,17 @@
                 <label for="price">Price:</label>
                 <input type="number" id="price" name="price" required>
                 <label for="shop">Shop:</label>
-                <input type="text" id="shop" name="shop" required>
-                <label for="soldOut">Sold Out:</label>
-                <input type="checkbox" id="soldOut" name="soldOut">
+                <input type="text" id="shop" name="shop" readonly>
+                <label for="collection">Collection:</label>
+                <select id="collection" name="collection" required>
+                    <option value="clothing">Clothing</option>
+                    <option value="jewellery">Jewellery</option>
+                    <option value="homeware">Homeware</option>
+                    <option value="books">Books</option>
+                    <option value="footwear">Footwear</option>
+                    <option value="accessories">Accessories</option>
+                </select>
+                </label>
                 <button type="submit">Add Item</button>
             </form>
         </div>
@@ -68,9 +84,9 @@
             <strong>Status:</strong> Available<br>
             {{/soldOut}}
             <form action="/inventory/delete" method="POST" style="display:inline;">
-                <input type="hidden" name="itemId" value="{{_id}}">
-                <button type="submit">Delete</button>
-            </form>
+            <input type="hidden" name="itemId" value="{{_id}}">
+            <button type="submit">Delete</button>
+        </form>
             {{#soldOut}}
             {{/soldOut}}
             {{^soldOut}}
@@ -87,6 +103,19 @@
         </div>
         {{/items}}
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/current-user-shop')
+                .then(response => response.json())
+                .then(data => {
+                    const shopSelect = document.getElementById('shop');
+                    shopSelect.value = data.shop;
+                    shopSelect.disabled = true; // Make the select box read-only
+                })
+                .catch(error => console.error('Error fetching shop:', error));
+        });
+    </script>
     
 </body>
 </html>
