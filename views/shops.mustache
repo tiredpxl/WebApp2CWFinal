@@ -15,8 +15,8 @@
         <div class="nav-links">
             <a href="/">Home</a>
             <a href="/about">About Us</a>
-            <a href="/inStore" class="active">What's in store</a>
-            <a href="/shops">Where you'll find us</a>
+            <a href="/inStore">What's in store</a>
+            <a href="/shops" class="active">Where you'll find us</a>
             {{#isVolunteer}}
             <a href="/inventory">Inventory</a>
             {{/isVolunteer}}
@@ -38,15 +38,17 @@
         <h1>Our Locations</h1>
     </div>
     <hr>
-        <ul>
+        <div class="page-container">
+        <div class="shops-grid">
             {{#shops}}
-            <li>
-                <h3>{{location}}</h3>
-                <p>Address: {{address}}</p>
-                <p>Postcode: {{postcode}}</p>
-                <p>Phone: {{phone}}</p>
-            </li>
+            <div class="shop-item">
+                <h2>{{location}}</h2>
+                <p>{{address}}</p>
+                <p>{{city}}</p>
+                <p>{{postcode}}</p>
+            </div>
             {{/shops}}
-        </ul>
+        </div>
+    </div>
     </body>
 </html>

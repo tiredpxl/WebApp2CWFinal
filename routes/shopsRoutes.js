@@ -38,4 +38,8 @@ router.get('/inventory', checkAssignedShop, (req, res) => {
     });
 });
 
+// New route for collections
+router.get('/collections/:name', shopsController.getCollection);
+
+
 module.exports = router;

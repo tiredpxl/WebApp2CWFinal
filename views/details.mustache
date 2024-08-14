@@ -34,15 +34,21 @@
             {{/isSignedIn}}
         </div>
     </div>
-    <div class="page-info">
-        <h1>{{name}}</h1>
-        <img src="/images/{{image}}" alt="{{name}}" style="width: 300px; height: 300px;">
-        <p><b>£{{price}}</b></p>
-        <p>{{description}}</p>
-        <p>{{shop}}</p>
-        {{#soldOut}}
-        <p class="sold-out">SOLD OUT</p>
-        {{/soldOut}}
+    <div class="page-container">
+        <div class="details-container">
+            <div class="image-column">
+                <img src="/images/{{image}}" alt="{{name}}" style="width: 300px; height: 300px;">
+            </div>
+            <div class="text-column">
+                <h1>{{name}}</h1>
+                <p><b>£{{price}}</b></p>
+                <p>{{description}}</p>
+                <p>{{shop}}</p>
+                {{#soldOut}}
+                <p class="sold-out">SOLD OUT</p>
+                {{/soldOut}}
+            </div>
+        </div>
     </div>
 </body>
 </html>

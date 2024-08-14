@@ -79,8 +79,8 @@ body {
 text-align: center;
 }
 .page-container {
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 400px;
+  padding-right: 400px;
 }
 .items-grid {
   display: grid;
@@ -144,4 +144,119 @@ text-align: center;
 .delete-button {
   background-color: #b0b0b0;
   color: #ffffff;
+}
+.details-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.details-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.image-column {
+  flex: 2;
+  padding-right: 5px;
+}
+
+.text-column {
+  flex: 1;
+}
+
+.image-column img {
+  max-width: 500px;
+  height: auto;
+}
+
+.collections-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.collection-item {
+  flex: 1 1 calc(33.333% - 40px);
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* FILE: styles.css */
+
+.collection-item {
+  flex: 1 1 calc(33.333% - 40px);
+  box-sizing: border-box;
+  text-align: center;
+  position: relative; /* Add this line */
+}
+
+.collection-item .image-container {
+  position: relative;
+}
+
+.collection-item img {
+  width: 200px; 
+  height: 200px; 
+  object-fit: cover; 
+  transition: opacity 0.3s ease; /* Add transition for smooth effect */
+}
+
+.collection-item:hover img {
+  opacity: 0.8; /* Slightly dim the image on hover */
+}
+
+.collection-item .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 1.2em;
+  transition: background 0.3s ease; 
+}
+
+.collection-item:hover .overlay {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.shops-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.shop-item {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.shop-item h2 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 1em;
+  color: #333;
+}
+
+.shop-item p {
+  margin: 5px 0;
+  font-size: 1em;
+  color: #666;
 }

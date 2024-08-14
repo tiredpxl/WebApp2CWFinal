@@ -39,5 +39,19 @@
         <p>We are the Glasgow Hospice Charity.</p>
     </div>
     <hr>
+    <div class="page-container">
+        <div class="collections-grid">
+            {{#collections}}
+            <div class="collection-item">
+                <a href="/collections/{{name}}">
+                <div class="image-container">
+                    <img src="images/{{name}}.jpg" alt="{{name}}">
+                    <div class="overlay">{{name}}</div>
+                </div>
+                </a>
+            </div>
+            {{/collections}}
+        </div>
+    </div>
 </body>
 </html>

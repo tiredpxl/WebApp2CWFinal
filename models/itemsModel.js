@@ -29,7 +29,8 @@ class ItemDAO {
                         price: 5.00,
                         shop: "Glasgow Hospice Charity Shop - Victoria Rd",
                         soldOut: false,
-                        image: 'tshirt.jpg'
+                        image: 'tshirt.jpg',
+                        collection: 'clothing'
                     },
                     {
                         shopNumber: 2,
@@ -38,7 +39,8 @@ class ItemDAO {
                         price: 10.00,
                         shop: "Glasgow Hospice Charity Shop - Kilmarnock Rd",
                         soldOut: false,
-                        image: 'jeans.jpg'
+                        image: 'jeans.jpg',
+                        collection: 'clothing'
 
                     },
                     {
@@ -48,7 +50,8 @@ class ItemDAO {
                         price: 15.00,
                         shop: "Glasgow Hospice Charity Shop - Broomielaw",
                         soldOut: false,
-                        image: 'vase.jpg'
+                        image: 'vase.jpg',
+                        collection: 'homeware'
                     },
                     {
                         shopNumber: 4,
@@ -57,7 +60,8 @@ class ItemDAO {
                         price: 4.00,
                         shop: "Glasgow Hospice Charity Shop - Partick",
                         soldOut: false,
-                        image: 'book.jpg'
+                        image: 'book.jpg',
+                        collection: 'books'
                     },
                     {
                         shopNumber: 1,
@@ -66,7 +70,8 @@ class ItemDAO {
                         price: 8.00,
                         shop: "Glasgow Hospice Charity Shop - Victoria Rd",
                         soldOut: false,
-                        image: 'bracelet.jpg'
+                        image: 'bracelet.jpg',
+                        collection: 'jewellery'
                     },
                     {
                         shopNumber: 2,
@@ -75,7 +80,8 @@ class ItemDAO {
                         price: 3.00,
                         shop: "Glasgow Hospice Charity Shop - Kilmarnock Rd",
                         soldOut: false,
-                        image: 'candle.jpg'
+                        image: 'candle.jpg',
+                        collection: 'homeware'
                     },
                     {
                         shopNumber: 3,
@@ -84,34 +90,108 @@ class ItemDAO {
                         price: 15.00,
                         shop: "Glasgow Hospice Charity Shop - Broomielaw",
                         soldOut: false,
-                        image: 'bag.jpg'
+                        image: 'bag.jpg',
+                        collection: 'accessories'
                     },
                     {
-                        shopNumber: 1,
+                        shopNumber: 4,
                         name: "Shoes",
                         description: 'A pair of black leather shoes',
                         price: 9.00,
                         shop: "Glasgow Hospice Charity Shop - Partick",
                         soldOut: true,
-                        image: 'shoes.jpg'
+                        image: 'shoes.jpg',
+                        collection: 'footwear'
                     },
                     {
-                        shopNumber: 2,
+                        shopNumber: 1,
                         name: "Coat",
                         description: 'A waterproof navy coat',
                         price: 20.00,
                         shop: "Glasgow Hospice Charity Shop - Victoria Rd",
                         soldOut: true,
-                        image: 'coat.jpg'
+                        image: 'coat.jpg',
+                        collection: 'clothing'
                     },
                     {
-                        shopNumber: 1,
+                        shopNumber: 2,
                         name: "Hat",
                         description: 'A straw hat',
                         price: 6.00,
                         shop: "Glasgow Hospice Charity Shop - Kilmarnock Rd",
                         soldOut: true,
-                        image: 'hat.jpg'
+                        image: 'hat.jpg',
+                        collection: 'accessories'
+                    },
+                    {
+                        shopNumber: 3,
+                        name: "Sneakers",
+                        description: 'A pair of white sneakers',
+                        price: 15.00,
+                        shop: "Glasgow Hospice Charity Shop - Broomielaw",
+                        soldOut: false,
+                        image: 'sneakers.jpg',
+                        collection: 'footwear'
+                    },
+                    {
+                        shopNumber: 3,
+                        name: "Scarf",
+                        description: 'A woolen scarf',
+                        price: 8.00,
+                        shop: "Glasgow Hospice Charity Shop - Broomielaw",
+                        soldOut: false,
+                        image: 'scarf.jpg',
+                        collection: 'accessories'
+                    },
+                    {
+                        shopNumber: 4,
+                        name: "Watch",
+                        description: 'A digital wristwatch',
+                        price: 12.00,
+                        shop: "Glasgow Hospice Charity Shop - Partick",
+                        soldOut: false,
+                        image: 'watch.jpg',
+                        collection: 'accessories'
+                    },
+                    {
+                        shopNumber: 1,
+                        name: "Leather Jacket",
+                        description: 'A leather jacket',
+                        price: 30.00,
+                        shop: "Glasgow Hospice Charity Shop - Victoria Rd",
+                        soldOut: false,
+                        image: 'leatherJacket.jpg',
+                        collection: 'clothing'
+                    },
+                    {
+                        shopNumber: 1,
+                        name: "Boots",
+                        description: 'A pair of boots, size 10',
+                        price: 12.00,
+                        shop: "Glasgow Hospice Charity Shop - Victoria Rd",
+                        soldOut: false,
+                        image: 'boots.jpg',
+                        collection: 'footwear'
+                    },
+                    {
+                        shopNumber: 2,
+                        name: "Belt",
+                        description: 'A leather belt',
+                        price: 5.00,
+                        shop: "Glasgow Hospice Charity Shop - Kilmarnock Rd",
+                        soldOut: false,
+                        image: 'belt.jpg',
+                        collection: 'accessories'
+                    },
+                    {
+                        shopNumber: 4,
+                        name: "Hiking Boots",
+                        description: 'A pair of hiking boots, size 8',
+                        price: 10.00,
+                        shop: "Glasgow Hospice Charity Shop -  Partick",
+                        soldOut: false,
+                        image: 'hikingBoots.jpg',
+                        collection: 'footwear'
                     }
                 ], (err) => {
                     if (err) {
@@ -169,6 +249,17 @@ class ItemDAO {
             callback(err, item);
         });
     }
+
+    getItemsByCollection(collectionName, callback) {
+        this.db.find({ collection: collectionName }, (err, items) => {
+            if (err) {
+                console.error('Error fetching items by collection:', err);
+            }
+            callback(err, items);
+        });
+    }
 }
+
+
 
 module.exports = ItemDAO;

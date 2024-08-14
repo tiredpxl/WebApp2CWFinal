@@ -71,13 +71,13 @@ function isManager(req, res, next) {
     }
 }
 
-function isVolunteer(req, res, next) {
-    if (req.session.user && req.session.user.role === 'Volunteer') {
-        next();
-    } else {
-        res.status(403).send('Access denied');
-    }
-}
+// function isVolunteer(req, res, next) {
+//     if (req.session.user && req.session.user.role === 'Volunteer') {
+//         next();
+//     } else {
+//         res.status(403).send('Access denied');
+//     }
+// }
 
 app.get('/admin', isManager, (req, res) => {
     usersDB.showAllEmployees((err, users) => {
@@ -89,11 +89,18 @@ app.get('/admin', isManager, (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    res.render('index', {
-        isSignedIn: !!req.session.user,
-        isManager: req.session.user && req.session.user.role === 'Manager',
-        isVolunteer: req.session.user && req.session.user.role === 'Volunteer',
-        username: req.session.user ? req.session.user.username : null
+    itemsDB.getAllItems((err, items) => {
+        if (err) {
+            return res.status(500).send('Error fetching items');
+        }
+        const collections = [...new Set(items.map(item => item.collection))];
+        res.render('index', {
+            isSignedIn: !!req.session.user,
+            isManager: req.session.user && req.session.user.role === 'Manager',
+            isVolunteer: req.session.user && req.session.user.role === 'Volunteer',
+            username: req.session.user ? req.session.user.username : null,
+            collections: collections.map(name => ({ name }))
+        });
     });
 });
 
@@ -167,6 +174,9 @@ app.post('/inventory/edit', (req, res) => {
     );
 });
 
+app.get('/collection/:collectionName', (req, res) => {
+    res.render('collection', { collectionName: req.params.collection });
+});
 
 
 app.use(function(req, res) {
