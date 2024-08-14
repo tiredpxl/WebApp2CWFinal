@@ -241,7 +241,7 @@ class ItemDAO {
     }
 
     getItemsByShop(shopNumber, callback) {
-        this.db.find({ shopNumber: shopNumber }, callback);
+        this.db.find({ shop: shopNumber }, callback);
     }
 
     getItemByName(itemName, callback) {

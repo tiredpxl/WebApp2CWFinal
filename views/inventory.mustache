@@ -3,43 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop</title>
+    <title>Inventory</title>
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <div class="navbar">
-        <div class="logo-container">
-            <img src="images/logo.png" alt="Logo" class="logo">
-            <div class="logo-text">Glasgow Hospice Charity</div>
-        </div>
-        <div class="nav-links">
-            <a href="/">Home</a>
-            <a href="/about">About Us</a>
-            <a href="/inStore"">What's in store</a>
-            <a href="/shops">Where you'll find us</a>
-            {{#isVolunteer}}
-            <a href="/inventory" class="active">Inventory</a>
-            {{/isVolunteer}}
-        </div>
-        <div class="auth-links">
-            {{#isSignedIn}}
-                <a href="/profile">{{username}}</a>
-                <a href="/logout">Logout</a>
-                {{#isManager}}
-                    <a href="/admin">Admin</a>
-                {{/isManager}}
-            {{/isSignedIn}}
-            {{^isSignedIn}}
-                <a href="/signIn">Sign In</a>
-            {{/isSignedIn}}
-        </div>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/about">About Us</a>
+        <a href="/inStore">What's in store</a>
+        <a href="/shops">Where you'll find us</a>
+        {{#isVolunteer}}
+        <a href="/inventory" class="active">Inventory</a>
+        {{/isVolunteer}}
+    </div>
+    <div class="auth-links">
+        {{#isSignedIn}}
+            <a href="/profile">{{username}}</a>
+            <a href="/logout">Logout</a>
+            {{#isManager}}
+                <a href="/admin">Admin</a>
+            {{/isManager}}
+        {{/isSignedIn}}
+        {{^isSignedIn}}
+            <a href="/signIn">Sign In</a>
+        {{/isSignedIn}}
     </div>
     <div class="page-info">
         <h1>Staff Area</h1>
     </div>
     <hr>
+    <br>
+    <div class="form-container">
+        <div class="card">
+            <h3>Add Item</h3>
+            <form action="/inventory/add" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="description">Description:</label>
+                <input type="text" id="description" name="description" required>
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" required>
+                <label for="shop">Shop:</label>
+                <input type="text" id="shop" name="shop" required>
+                <label for="soldOut">Sold Out:</label>
+                <input type="checkbox" id="soldOut" name="soldOut">
+                <button type="submit">Add Item</button>
+            </form>
+        </div>
+    </div>
+    <br>
+    <hr>
     <div class="items-grid">
-            {{#items}}
+        {{#items}}
         <div class="item-container">
             <img src="/images/{{image}}" alt="{{name}}" style="width: 300px; height: 300px;">
             <strong>Name:</strong> {{name}}<br>
@@ -69,117 +84,9 @@
                 Edit
                 </button>
             {{/soldOut}}
-            <hr>
         </div>
-    {{/items}}
+        {{/items}}
     </div>
-
-    <div class="form-container">
-    <div class="card">
-        <h3>Add Item</h3>
-        <form action="/inventory/add" method="POST">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <br>
-            <label for="description">Description:</label>
-            <input type="text" id="description" name="description" required>
-            <br>
-            <label for="price">Price:</label>
-            <input type="number" id="price" name="price" step="0.01" required>
-            <br>
-            <label for="shop">Shop Location:</label>
-            <select id="shop" name="shop" required>
-                <option value="Glasgow Hospice Charity Shop - Victoria Rd">Victoria Rd</option>
-                <option value="Glasgow Hospice Charity Shop - Kilmarnock Rd">Kilmarnock Rd</option>
-                <option value="Glasgow Hospice Charity Shop - Broomielaw">Broomielaw</option>
-                <option value="Glasgow Hospice Charity Shop - Partick">Partick</option>
-            </select>
-            <br>
-            <label for="soldOut">Sold Out:</label>
-            <input type="checkbox" id="soldOut" name="soldOut">
-            <br>
-            <button type="submit">Add Item</button>
-        </form>
-    </div>
-
-    <div class="card">
-        <h3>Edit Item</h3>
-        <form action="/inventory/edit" method="POST">
-            <input type="hidden" id="edit-itemId" name="itemId" required>
-            <br>
-            <label for="name">Name:</label>
-            <input type="text" id="edit-name" name="name" required>
-            <br>
-            <label for="description">Description:</label>
-            <input type="text" id="edit-description" name="description" required>
-            <br>
-            <label for="price">Price:</label>
-            <input type="number" id="edit-price" name="price" step="0.01" required>
-            <br>
-            <label for="shop">Shop Location:</label>
-            <select id="edit-shop" name="shop" required>
-                <option value="Glasgow Hospice Charity Shop - Victoria Rd">Victoria Rd</option>
-                <option value="Glasgow Hospice Charity Shop - Kilmarnock Rd">Kilmarnock Rd</option>
-                <option value="Glasgow Hospice Charity Shop - Broomielaw">Broomielaw</option>
-                <option value="Glasgow Hospice Charity Shop - Partick">Partick</option>
-            </select>
-            <br>
-            <label for="soldOut">Sold Out:</label>
-            <input type="checkbox" id="edit-soldOut" name="soldOut">
-            <br>
-            <button type="submit">Edit Item</button>
-        </form>
-    </div>
-</div>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const editButtons = document.querySelectorAll('.edit-button');
-        
-        editButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const itemId = this.getAttribute('data-item-id');
-                const name = this.getAttribute('data-name');
-                const description = this.getAttribute('data-description');
-                const price = this.getAttribute('data-price');
-                const shop = this.getAttribute('data-shop');
-                const soldOut = this.getAttribute('data-sold-out') === 'true';
-
-                document.getElementById('edit-itemId').value = itemId;
-                document.getElementById('edit-name').value = name;
-                document.getElementById('edit-description').value = description;
-                document.getElementById('edit-price').value = price;
-                document.getElementById('edit-shop').value = shop;
-                document.getElementById('edit-soldOut').checked = soldOut;
-            });
-        });
-    });
-
-        const deleteForms = document.querySelectorAll('form[action="/inventory/delete"]');
-        
-        deleteForms.forEach(form => {
-            form.addEventListener('submit', function(event) {
-                event.preventDefault();
-                const formData = new FormData(this);
-                const itemId = formData.get('itemId');
-
-                fetch(`/inventory/delete/${itemId}`, {
-                    method: 'DELETE',
-                })
-                .then(response => {
-                    if (response.ok) {
-                        window.location.reload();
-                    } else {
-                        alert('Failed to delete item');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Failed to delete item');
-                });
-            });
-        });
-
-</script>
+    
 </body>
 </html>

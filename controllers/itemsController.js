@@ -6,7 +6,12 @@ itemsDB.init();
 
 // Get all items - volunteer inventory
 exports.getAllItems = (req, res) => {
-    itemsDB.getAllItems((err, items) => {
+    const currentUser = req.session.user;
+    if (!currentUser) {
+        return res.status(401).send('Unauthorized');
+    }
+
+    itemsDB.getItemsByShop(currentUser.shop, (err, items) => {
         if (err) {
             return res.status(500).send('Internal Server Error');
         }

@@ -100,9 +100,6 @@ class UsersDAO {
         });
     }
 
-    assignShop(userId, shopNumber, callback) {
-        this.db.update({ _id: userId }, { $set: { assignedShop: shopNumber } }, {}, callback);
-    }
 }
 
 module.exports = UsersDAO;

@@ -123,8 +123,29 @@ app.post('/signIn', (req, res) => {
         if (err || !user) {
             return res.status(401).send('Invalid credentials');
         }
-        req.session.user = { username: user.username, role: user.role };
+        req.session.user = { username: user.username, role: user.role, shop: user.shop };
         res.redirect('/');
+    });
+});
+
+function getCurrentUser(req) {
+    return req.session.user;
+}
+
+// Route to get filtered items
+app.get('/inventory', (req, res) => {
+    const currentUser = getCurrentUser(req);
+    if (!currentUser) {
+        return res.status(401).send('Unauthorized');
+    }
+
+    itemsDB.getAllItems((err, items) => {
+        if (err) {
+            return res.status(500).send('Error fetching items');
+        }
+
+    const filteredItems = items.filter(item => item.shop === currentUser.shop);
+    res.json(filteredItems);
     });
 });
 
