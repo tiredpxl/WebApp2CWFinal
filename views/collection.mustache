@@ -8,24 +8,70 @@
 </head>
 <body>
     <div class="navbar">
-        <!-- Navbar content -->
+        <div class="logo-container">
+            <img src="/images/logo.png" alt="Logo" class="logo">
+            <div class="logo-text">Glasgow Hospice Charity</div>
+        </div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about">About Us</a>
+            <a href="/inStore"">What's in store</a>
+            <a href="/shops">Where you'll find us</a>
+            {{#isVolunteer}}
+            <a href="/inventory">Inventory</a>
+            {{/isVolunteer}}
+        </div>
+        <div class="auth-links">
+            {{#isSignedIn}}
+                <a href="/profile">{{username}}</a>
+                <a href="/logout">Logout</a>
+                {{#isManager}}
+                    <a href="/admin">Admin</a>
+                {{/isManager}}
+            {{/isSignedIn}}
+            {{^isSignedIn}}
+                <a href="/signIn">Sign In</a>
+            {{/isSignedIn}}
+        </div>
     </div>
     <div class="page-info">
         <h1>{{collectionName}}</h1>
     </div>
     <hr>
-    <div class="items-grid">
-        {{#items}}
-        <div class="item-container" data-item-name="{{name}}">
-            <img src="/images/{{image}}" alt="{{name}}" style="width: 300px; height: 300px;">
-            <strong>Name:</strong> {{name}}<br>
-            <strong>Description:</strong> {{description}}<br>
-            <strong>Price:</strong> £{{price}}<br>
+    <div class="page-container">
+        <div class="items-grid">
+            {{#items}}
+            <div class="item-container" data-item-name="{{name}}">
+                <div class="item-container" data-item-name="{{name}}">
+                    <img src="/images/{{image}}" alt="{{name}}" style="width: 300px; height: 300px;">
+                    <br>
+                    <h4>{{name}}</h4>
+                    <br>
+                    <p><b>£{{price}}</b></p>
+                    <br>
+                    <p>{{shop}}</p>
+                    <p class= "{{#soldOut}}sold-out{{/soldOut}}">
+                        {{#soldOut}}SOLD OUT{{/soldOut}}
+                    </p>
+                </div>
+            </div>
+            {{/items}}
+            {{^items}}
+            <p>No items found in this collection.</p>
+            {{/items}}
         </div>
-        {{/items}}
-        {{^items}}
-        <p>No items found in this collection.</p>
-        {{/items}}
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const itemContainers = document.querySelectorAll('.item-container');
+
+            itemContainers.forEach(container => {
+            container.addEventListener('click', function() {
+                const itemName = this.dataset.itemName;
+                window.location.href = `/details/${itemName}`;
+            });
+        });
+    });
+    </script>
 </body>
 </html>

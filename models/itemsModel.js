@@ -188,7 +188,7 @@ class ItemDAO {
                         name: "Hiking Boots",
                         description: 'A pair of hiking boots, size 8',
                         price: 10.00,
-                        shop: "Glasgow Hospice Charity Shop -  Partick",
+                        shop: "Glasgow Hospice Charity Shop - Partick",
                         soldOut: false,
                         image: 'hikingBoots.jpg',
                         collection: 'footwear'

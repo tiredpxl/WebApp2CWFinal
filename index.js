@@ -26,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/images', express.static(path.join(__dirname, 'public/images')));
 app.use(bodyParser.urlencoded({ extended: false }));
 
+
 app.engine("mustache", mustache());
 app.set("view engine", "mustache");
 app.set('views', './views');
@@ -38,16 +39,28 @@ app.use(session({
     cookie: { secure: false } // Set to true if using HTTPS
 }));
 
+function addAuthVariables(req, res, next) {
+    res.locals.isSignedIn = !!req.session.user;
+    res.locals.isManager = req.session.user && req.session.user.role === 'Manager';
+    res.locals.isVolunteer = req.session.user && req.session.user.role === 'Volunteer';
+    res.locals.username = req.session.user ? req.session.user.username : null;
+    next();
+}
+app.use(addAuthVariables);
+
 // Import route files
 const itemsRoutes = require('./routes/itemsRoutes');
 const usersRoutes = require('./routes/usersRoutes');
 const shopsRoutes = require('./routes/shopsRoutes');
+
+
 
 // Use route files
 app.use('/', itemsRoutes);
 app.use('/users', usersRoutes);
 app.use('/', shopsRoutes);
 app.use('/api', logoutRoute);
+
 
 app.get('/about', function(req, res) {
     res.render('about');
@@ -71,13 +84,7 @@ function isManager(req, res, next) {
     }
 }
 
-// function isVolunteer(req, res, next) {
-//     if (req.session.user && req.session.user.role === 'Volunteer') {
-//         next();
-//     } else {
-//         res.status(403).send('Access denied');
-//     }
-// }
+
 
 app.get('/admin', isManager, (req, res) => {
     usersDB.showAllEmployees((err, users) => {
@@ -168,7 +175,7 @@ app.post('/inventory/edit', (req, res) => {
                 console.error(err);
                 res.status(500).send('Internal Server Error');
             } else {
-                res.redirect('/inventory');
+                res.redirect('/inventory', );
             }
         }
     );

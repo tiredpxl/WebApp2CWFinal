@@ -260,3 +260,8 @@ text-align: center;
   font-size: 1em;
   color: #666;
 }
+.sort {
+  float: left;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}

@@ -35,14 +35,24 @@
         </div>
     </div>
     <div class="page-info">
-    <h1>Window Shopping</h1>
-    <p>Come have a browse at what we've got in all 4 of our shops</p>
+        <h1>Window Shopping</h1>
+        <p>Come have a browse at what we've got in all 4 of our shops</p>
+        <div class="sort">
+            <label for="sort">Sort by:</label>
+            <select id="sort">
+                <option value="name-asc">Sort by Name (A-Z)</option>
+                <option value="name-desc">Sort by Name (Z-A)</option>
+                <option value="price-asc">Sort by Price (Low to High)</option>
+                <option value="price-desc">Sort by Price (High to Low)</option>
+            </select>
+        </div>
     </div>
     <hr>
+    <br>
     <div class="page-container">
         <div class="items-grid">
             {{#items}}
-                <div class="item-container" data-item-name="{{name}}">
+                <div class="item-container" data-item-name="{{name}}" data-item-price="{{price}}">
                     <img src="/images/{{image}}" alt="{{name}}" style="width: 300px; height: 300px;">
                     <br>
                     <h4>{{name}}</h4>
@@ -50,7 +60,7 @@
                     <p><b>£{{price}}</b></p>
                     <br>
                     <p>{{shop}}</p>
-                    <p class= "{{#soldOut}}sold-out{{/soldOut}}">
+                    <p class="{{#soldOut}}sold-out{{/soldOut}}">
                         {{#soldOut}}SOLD OUT{{/soldOut}}
                     </p>
                 </div>
@@ -60,18 +70,31 @@
             {{/items}}
         </div>
     </div>
-
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const itemContainers = document.querySelectorAll('.item-container');
+        const sortSelect = document.getElementById('sort');
 
-        itemContainers.forEach(container => {
-        container.addEventListener('click', function() {
-            const itemName = this.dataset.itemName;
-            window.location.href = `/details/${itemName}`;
+        sortSelect.addEventListener('change', function() {
+            const sortBy = this.value;
+            const itemsGrid = document.querySelector('.items-grid');
+            const itemContainers = Array.from(itemsGrid.querySelectorAll('.item-container'));
+
+            const sortedItems = itemContainers.sort((a, b) => {
+                if (sortBy === 'price-asc') {
+                    return parseFloat(a.dataset.itemPrice) - parseFloat(b.dataset.itemPrice);
+                } else if (sortBy === 'price-desc') {
+                    return parseFloat(b.dataset.itemPrice) - parseFloat(a.dataset.itemPrice);
+                } else if (sortBy === 'name-asc') {
+                    return a.dataset.itemName.localeCompare(b.dataset.itemName);
+                } else if (sortBy === 'name-desc') {
+                    return b.dataset.itemName.localeCompare(a.dataset.itemName);
+                }
+            });
+
+            itemsGrid.innerHTML = '';
+            sortedItems.forEach(item => itemsGrid.appendChild(item));
         });
     });
-});
-</script>
+    </script>
 </body>
 </html>

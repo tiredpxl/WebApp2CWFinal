@@ -4,8 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
+    <div class="navbar">
+        <div class="logo-container">
+            <img src="/images/logo.png" alt="Logo" class="logo">
+            <div class="logo-text">Glasgow Hospice Charity</div>
+        </div>
+        <div class="nav-links">
+            <a href="/" class="active">Home</a>
+            <a href="/about">About Us</a>
+            <a href="/inStore"">What's in store</a>
+            <a href="/shops">Where you'll find us</a>
+            {{#isVolunteer}}
+            <a href="/inventory">Inventory</a>
+            {{/isVolunteer}}
+        </div>
+        <div class="auth-links">
+            {{#isSignedIn}}
+                <a href="/profile">{{username}}</a>
+                <a href="/logout">Logout</a>
+                {{#isManager}}
+                    <a href="/admin">Admin</a>
+                {{/isManager}}
+            {{/isSignedIn}}
+            {{^isSignedIn}}
+                <a href="/signIn">Sign In</a>
+            {{/isSignedIn}}
+        </div>
+    </div>
     <header>
         <h1>Admin Panel</h1>
     </header>
